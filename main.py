@@ -5,7 +5,7 @@ import random
 app = Flask(__name__)
 
 ##Connect to Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://cafe_db_hxjr_user:ofkGXG6fjSvJtmQjM22kbtGORlVuqp8n@dpg-cg8bk4o2qv288hki0l90-a/cafe_db_hxjr'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://cafe_db_hxjr_user:ofkGXG6fjSvJtmQjM22kbtGORlVuqp8n@dpg-cg8bk4o2qv288hki0l90-a.oregon-postgres.render.com/cafe_db_hxjr'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -34,6 +34,7 @@ class Cafe(db.Model):
             dictionary[column.name] = getattr(self, column.name)
         return dictionary
 
+db.create_all()
 
 @app.route("/")
 def home():
