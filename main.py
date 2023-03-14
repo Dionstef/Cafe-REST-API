@@ -5,7 +5,7 @@ import random
 app = Flask(__name__)
 
 ##Connect to Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://cafe_db_user:ihpgOftVY6vqTAp6iSbcgBYiUniNhQiL@dpg-cg8b38t269vf27frs0ug-a/cafe_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
