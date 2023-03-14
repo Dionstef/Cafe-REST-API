@@ -5,7 +5,7 @@ import random
 app = Flask(__name__)
 
 ##Connect to Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://cafe_db_hxjr_user:ofkGXG6fjSvJtmQjM22kbtGORlVuqp8n@dpg-cg8bk4o2qv288hki0l90-a.oregon-postgres.render.com/cafe_db_hxjr'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://cafe_db_hxjr_user:ofkGXG6fjSvJtmQjM22kbtGORlVuqp8n@dpg-cg8bk4o2qv288hki0l90-a.oregon-postgres.render.com/cafe_db_hxjr'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -23,7 +23,7 @@ class Cafe(db.Model):
     has_sockets = db.Column(db.Boolean, nullable=False)
     can_take_calls = db.Column(db.Boolean, nullable=False)
     coffee_price = db.Column(db.String(250), nullable=True)
-    db.create_all()
+#     db.create_all()
 
     def to_dict(self):
         dictionary = {}
