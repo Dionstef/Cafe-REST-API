@@ -5,26 +5,14 @@ import random
 app = Flask(__name__)
 
 ##Connect to Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://cafe_db_hxjr_user:ofkGXG6fjSvJtmQjM22kbtGORlVuqp8n@dpg-cg8bk4o2qv288hki0l90-a.oregon-postgres.render.com/cafe_db_hxjr'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://cafe_db_hxjr_user:ofkGXG6fjSvJtmQjM22kbtGORlVuqp8n@dpg-cg8bk4o2qv288hki0l90-a.oregon-postgres.render.com/cafe_db_hxjr'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
 ##Cafe TABLE Configuration
 class Cafe(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), unique=True, nullable=False)
-    map_url = db.Column(db.String(500), nullable=False)
-    img_url = db.Column(db.String(500), nullable=False)
-    location = db.Column(db.String(250), nullable=False)
-    seats = db.Column(db.String(250), nullable=False)
-    has_toilet = db.Column(db.Boolean, nullable=False)
-    has_wifi = db.Column(db.Boolean, nullable=False)
-    has_sockets = db.Column(db.Boolean, nullable=False)
-    can_take_calls = db.Column(db.Boolean, nullable=False)
-    coffee_price = db.Column(db.String(250), nullable=True)
-#     db.create_all()
-
+    
     def to_dict(self):
         dictionary = {}
         # Loop through each column in the data record
@@ -40,6 +28,22 @@ class Cafe(db.Model):
 @app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route("/db-init")
+def db_init():
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(250), unique=True, nullable=False)
+    map_url = db.Column(db.String(500), nullable=False)
+    img_url = db.Column(db.String(500), nullable=False)
+    location = db.Column(db.String(250), nullable=False)
+    seats = db.Column(db.String(250), nullable=False)
+    has_toilet = db.Column(db.Boolean, nullable=False)
+    has_wifi = db.Column(db.Boolean, nullable=False)
+    has_sockets = db.Column(db.Boolean, nullable=False)
+    can_take_calls = db.Column(db.Boolean, nullable=False)
+    coffee_price = db.Column(db.String(250), nullable=True)
+    db.create_all()
+    return jsonify({"status": "success", "message": "db initialized successfully"})
 
 
 ## HTTP GET - Read Record
