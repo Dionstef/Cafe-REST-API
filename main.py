@@ -23,6 +23,7 @@ class Cafe(db.Model):
     has_sockets = db.Column(db.Boolean, nullable=False)
     can_take_calls = db.Column(db.Boolean, nullable=False)
     coffee_price = db.Column(db.String(250), nullable=True)
+    db.create_all()
 
     def to_dict(self):
         dictionary = {}
@@ -34,7 +35,7 @@ class Cafe(db.Model):
             dictionary[column.name] = getattr(self, column.name)
         return dictionary
 
-db.create_all()
+
 
 @app.route("/")
 def home():
