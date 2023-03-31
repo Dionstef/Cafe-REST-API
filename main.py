@@ -106,7 +106,7 @@ def add():
     
 ## Add record manually
 @app.route("/add-manual", methods=["GET", "POST"])
-def add-manual():
+def add_manual():
     if request.method == "POST":
         new_cafe = Cafe(
             name=request.form.get("name"),
