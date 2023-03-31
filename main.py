@@ -105,8 +105,8 @@ def add():
 
     
 ## Add record manually
-@app.route("/manual-add", methods=["GET", "POST"])
-def manual-add():
+@app.route("/add-manual", methods=["GET", "POST"])
+def add-manual():
     if request.method == "POST":
         new_cafe = Cafe(
             name=request.form.get("name"),
@@ -122,7 +122,7 @@ def manual-add():
         )
         db.session.add(new_cafe)
         db.session.commit()
-    return render_template("manual-add.html")
+    return render_template("add-manual.html")
 
 
 ## HTTP PUT/PATCH - Update Record
