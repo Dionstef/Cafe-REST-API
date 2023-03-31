@@ -122,6 +122,7 @@ def add_manual():
         )
         db.session.add(new_cafe)
         db.session.commit()
+        return jsonify(response={"success": "Successfully added the new cafe."})
     return render_template("add-manual.html")
 
 
