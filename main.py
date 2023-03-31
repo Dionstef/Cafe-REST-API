@@ -103,6 +103,27 @@ def add():
         db.session.commit()
         return jsonify(response={"success": "Successfully added the new cafe."})
 
+    
+## Add record manually
+@app.route("/manual-add", methods=["GET", "POST"])
+def manual-add():
+    if request.method == "POST":
+        new_cafe = Cafe(
+            name=request.form.get("name"),
+            map_url=request.form.get("map_url"),
+            img_url=request.form.get("img_url"),
+            location=request.form.get("location"),
+            has_sockets=bool(request.form.get("has_sockets")),
+            has_toilet=bool(request.form.get("has_toilet")),
+            has_wifi=bool(request.form.get("has_wifi")),
+            can_take_calls=bool(request.form.get("can_take_calls")),
+            seats=request.form.get("seats"),
+            coffee_price=request.form.get("coffee_price"),
+        )
+        db.session.add(new_cafe)
+        db.session.commit()
+    return render_template("manual-add.html")
+
 
 ## HTTP PUT/PATCH - Update Record
 @app.route('/update-price/<cafe_id>', methods=["PATCH"])
