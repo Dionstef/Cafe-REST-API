@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+</head>
+<body>
+    <form action="{{ url_for('manual-add') }}" method="POST">
+        <label>Cafe Name</label>
+        <input type="text" name="name">
+        <label>Map URL</label>
+        <input type="text" name="map_url">
+        <label>Image URL</label>
+        <input type="text" name="img_url">
+        <label>Location</label>
+        <input type="text" name="location">
+        <label>Has socketsL</label>
+        <input type="text" name="has_sockets">
+        <label>Has toilet</label>
+        <input type="text" name="has_toilet">
+        <label>Has WiFI</label>
+        <input type="text" name="has_wifi">
+        <label>Can take calls</label>
+        <input type="text" name="can_take_calls">
+        <label>Number of seats</label>
+        <input type="text" name="seats">
+        <label>Price of coffee</label>
+        <input type="text" name="coffee_price">
+        <button type="submit">Add Cafe</button>
+    </form>
+</body>
+</html>
