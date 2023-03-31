@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import random
+import datetime
 
 app = Flask(__name__)
 
@@ -38,7 +39,9 @@ class Cafe(db.Model):
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    today = datetime.date.today()
+    year = today.strftime("%Y")
+    return render_template("index.html", current_year=year)
 
 @app.route("/db-init")
 def db_init():
